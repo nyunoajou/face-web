@@ -9,7 +9,12 @@ const {
   Header, Content, Footer, Sider,
 } = Layout;
 
-export const FaceWebLayout = ({ children, classes }) => (
+let itJustForRerender = 0;
+
+export const FaceWebLayout = ({ children, classes }) => {
+  itJustForRerender += 1;
+
+  return (
   <Layout style={{ minHeight: '100%' }}>
     <Sider
       breakpoint="lg"
@@ -17,14 +22,9 @@ export const FaceWebLayout = ({ children, classes }) => (
       onBreakpoint={(broken) => { console.log(broken); }}
       onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
     >
-      <Navbar />
+      <Navbar itJustForRerender={itJustForRerender} />
     </Sider>
     <Layout>
-      {/*
-      <Header style={{ background: '#fff', padding: 0 }} >
-        <Navbar />
-      </Header>
-      */}
       <Content style={{ margin: '24px 16px 0' }}>
         <div>{children}</div>
       </Content>
@@ -33,7 +33,7 @@ export const FaceWebLayout = ({ children, classes }) => (
       </Footer>
     </Layout>
   </Layout>
-)
+)}
 
 FaceWebLayout.propTypes = {
   children: PropTypes.element.isRequired

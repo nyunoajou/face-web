@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { Menu, Icon } from 'antd';
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   display: block;
 
   width: 100%;
@@ -31,6 +31,8 @@ const StyledLink = styled(Link)`
 
 
 export default function MenuLink({ icon, to, label, isSelected }) {
+  console.log('link render');
+
   return (
     <StyledLink className={isSelected && 'isSelected'} to={to}>
       <Icon type={icon} />

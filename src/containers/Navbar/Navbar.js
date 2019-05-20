@@ -39,7 +39,7 @@ const userMenu = [{
   label: '질문하기',
 }];
 
-export const Navbar = ({
+export default function Navbar ({
   avatarUrl,
   displayName,
   authExists,
@@ -51,9 +51,8 @@ export const Navbar = ({
   classes,
   isLoaded,
   ...props
-}) => {
+}) {
   const path = props.history.location.pathname
-  console.log(path);
 
   return (
     <Menu
@@ -104,5 +103,3 @@ Navbar.propTypes = {
   handleMenu: PropTypes.func.isRequired, // from enhancer (withHandlers - firebase)
   anchorEl: PropTypes.object // from enhancer (withStateHandlers - handleMenu)
 }
-
-export default Navbar
