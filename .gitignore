@@ -1,0 +1,17 @@
+# OS
+*.log
+**/*.log
+.DS_Store
+**/.DS_Store
+
+# firebase
+.firebase/*
+.firebaserc
+
+# Dependencies
+**/node_modules
+
+# React App
+**/build
+src/config.js
+.env
