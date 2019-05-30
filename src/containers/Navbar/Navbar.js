@@ -10,6 +10,7 @@ import { Layout, Menu, Icon, Spin } from 'antd';
 import { LIST_PATH } from 'constants/paths'
 import MenuLink from 'components/MenuLink';
 
+import Logo from './Logo';
 import AccountMenu from './AccountMenu'
 import LoginMenu from './LoginMenu'
 
@@ -39,6 +40,12 @@ const userMenu = [{
   label: '질문하기',
 }];
 
+const adminMenu = [{
+  icon: 'edit',
+  to: '/admin/posts',
+  label: '요청 질문들',
+}];
+
 export default function Navbar ({
   avatarUrl,
   displayName,
@@ -50,26 +57,22 @@ export default function Navbar ({
   handleMenu,
   classes,
   isLoaded,
+  auth: { email },
   ...props
 }) {
-  const path = props.history.location.pathname
+  const path = props.history.location.pathname;
+  const isAdmin = email === 'admin@test.com';
 
   return (
     <Menu
-      theme="dark"
       mode="inline"
       onClick={() => {}}
     >
-      <Typography
-        variant="h6"
-        color="inherit"
-        className={classes.flex}
-        component={Link}
-        to={'/'}>
-        FACEWEB
-      </Typography>
-      {authExists && (
-        userMenu.map((data, index) => <MenuLink key={index} isSelected={data.to === path} {...data} />)
+      <Logo />
+      {!isLoaded ? <Spin /> : authExists && isAdmin ? (
+          adminMenu.map((data, index) => <MenuLink key={index} isSelected={data.to === path} {...data} />)
+        ) : (
+          userMenu.map((data, index) => <MenuLink key={index} isSelected={data.to === path} {...data} />)
       )}
       <NavFooter>
         {authExists ? (

@@ -2,7 +2,7 @@ import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper'
 import createHistory from 'history/createBrowserHistory'
 import LoadingSpinner from 'components/LoadingSpinner'
-import { LIST_PATH } from 'constants/paths'
+import { LIST_PATH, POST_PATH } from 'constants/paths'
 
 const locationHelper = locationHelperBuilder({})
 const history = createHistory()
@@ -51,8 +51,21 @@ export const UserIsNotAuthenticated = connectedRouterRedirect({
   authenticatedSelector: ({ firebase: { auth } }) => auth.isEmpty,
   authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
     !auth.isLoaded || isInitializing,
-  redirectPath: (state, ownProps) =>
-    locationHelper.getRedirectQueryParam(ownProps) || LIST_PATH,
+  redirectPath: (state, ownProps) => {
+    console.log('state');
+    console.log(state);
+    console.log('ownProps');
+    console.log(ownProps);
+
+    const { firebase: { auth: { email } } } = state;
+
+    if (email === 'admin@test.com') {
+      console.log('isAdmin');
+      return POST_PATH;
+    }
+
+    return locationHelper.getRedirectQueryParam(ownProps) || LIST_PATH;
+  },
   redirectAction: newLoc => dispatch => {
     // Use push, replace, and go to navigate around.
     history.push(newLoc)

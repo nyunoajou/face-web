@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components';
 import PropTypes from 'prop-types'
 import { Layout, Menu, Icon } from 'antd';
 
@@ -11,12 +12,17 @@ const {
 
 let itJustForRerender = 0;
 
+const StyledSider = styled(Sider)`
+  background: white;
+`;
+
 export const FaceWebLayout = ({ children, classes }) => {
   itJustForRerender += 1;
 
   return (
   <Layout style={{ minHeight: '100%' }}>
     <Sider
+      theme="light"
       breakpoint="lg"
       collapsedWidth="0"
       onBreakpoint={(broken) => { console.log(broken); }}

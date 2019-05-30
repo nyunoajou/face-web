@@ -11,14 +11,16 @@ const StyledLink = styled(NavLink)`
   line-height: 40px;
   padding-left: 24px;
 
-  color: rgba(255, 255, 255, 0.65);
+  color: black;
 
   text-decoration: none;
 
   &.isSelected {
-    background: white;
+    background: #e6f7ff;
 
-    color: #141721;
+    color: #1890ff;
+
+    border-right: 3px solid #1890ff;
   }
 
   > i {
