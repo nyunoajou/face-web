@@ -8,7 +8,7 @@ import moment from 'moment';
 import renderTextInputField from 'utils/renderTextInputField';
 import renderTextAreaField from 'utils/renderTextAreaField';
 
-import AnswerForm from '../AnswerForm';
+import AnswerFormGenerator from '../AnswerForm';
 
 const { TextArea } = Input;
 
@@ -24,6 +24,7 @@ const Title = styled.h3`
 
 const PostItem = ({ uid, onSubmit, title, content, userEmail, createdAt, answer }) => {
   const formatedCreatedAt = moment(createdAt).format('YYYY-MM-DD. hh:mm');
+  const AnswerForm = AnswerFormGenerator(uid);
 
   return (
     <Wrapper>
