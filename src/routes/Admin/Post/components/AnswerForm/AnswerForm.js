@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
 
-  padding: 2rem;
+  margin-top: 1rem;
 `;
 
 const ButtonWrapper = styled.div`
@@ -21,27 +21,19 @@ const ButtonWrapper = styled.div`
   flex-direction: row-reverse;
 `;
 
-const CreateForm = ({ submitting, handleSubmit }) => (
+const AnswerForm = ({ disabled, submitting, handleSubmit }) => (
   <Wrapper>
     <form onSubmit={handleSubmit}>
       <div>
         <Field
-          name="title"
-          label="제목"
-          component={renderTextInputField}
-          disabled={submitting}
-        />
-      </div>
-      <div>
-        <Field
-          name="content"
-          label="내용"
+          name="answer"
+          label="답변"
           component={renderTextAreaField}
-          disabled={submitting}
+          disabled={submitting || disabled}
         />
       </div>
       <ButtonWrapper>
-        <Button loading={submitting} htmlType="submit" type="primary">
+        <Button disabled={disabled} loading={submitting} htmlType="submit" type="primary">
           완료
         </Button>
       </ButtonWrapper>
@@ -49,9 +41,9 @@ const CreateForm = ({ submitting, handleSubmit }) => (
   </Wrapper>
 )
 
-CreateForm.propTypes = {
+AnswerForm.propTypes = {
   submitting: PropTypes.bool.isRequired, // from enhancer (reduxForm)
   handleSubmit: PropTypes.func.isRequired, // from enhancer (reduxForm)
 }
 
-export default CreateForm;
+export default AnswerForm;

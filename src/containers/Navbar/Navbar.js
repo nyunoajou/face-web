@@ -38,6 +38,10 @@ const userMenu = [{
   icon: 'edit',
   to: '/user/form',
   label: '질문하기',
+}, {
+  icon: 'unordered-list',
+  to: '/user/posts',
+  label: '내 질문들',
 }];
 
 const adminMenu = [{

@@ -14,7 +14,7 @@ export default compose(
   // redirect to /login if user is not logged in
   UserIsAuthenticated,
   // Map auth uid from state to props
-  connect(({ firebase: { auth: { uid } } }) => ({ uid })),
+  connect(({ firebase: { auth: { uid, email } } }) => ({ uid, email })),
   // Wait for uid to exist before going further
   spinnerWhileLoading(['uid']),
   // Create listeners based on current users UID
@@ -29,13 +29,14 @@ export default compose(
   // Add handlers as props
   withHandlers({
     addPost: props => newInstance => {
-      const { firebase, uid } = props
+      const { firebase, uid, email } = props
       if (!uid) {
         return error('로그인이 필요한 작업입니다.');
       }
       return firebase
         .push('posts', {
           ...newInstance,
+          userEmail: email,
           createdBy: uid,
           createdAt: firebase.database.ServerValue.TIMESTAMP
         })

@@ -8,11 +8,10 @@ import PostItem from '../PostItem';
 const Wrapper = styled.div`
 `;
 
-export default function PostsPage({ posts }) {
-  console.log(posts);
+export default function PostsPage({ posts, updatePost }) {
   return (
     <Wrapper>
-      {posts.map(({ key, value }) => <PostItem key={key} {...value} />)}
+      {posts.map(({ key, value }) => <PostItem key={key} onSubmit={updatePost} uid={key} {...value} />)}
     </Wrapper>
   );
 }

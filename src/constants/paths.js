@@ -6,4 +6,6 @@ export const SIGNUP_PATH = '/signup'
 // face-web
 export const DASHBOARD_PATH = '/user/dashboard';
 export const FORM_PATH = '/user/form';
+export const USER_POSTS_PATH = '/user/posts';
+export const USER_POST_PATH = '/user/post';
 export const POST_PATH = '/admin/posts';

@@ -24,6 +24,7 @@ export const ProjectsPage = ({
   toggleDialog,
   deleteProject,
   addProject,
+  classes,
   match,
   goToProject
 }) => (
@@ -35,13 +36,13 @@ export const ProjectsPage = ({
       exact
       path={match.path}
       render={() => (
-        <div>
+        <div className={classes.root}>
           <NewProjectDialog
             onSubmit={addProject}
             open={newDialogOpen}
             onRequestClose={toggleDialog}
           />
-          <div>
+          <div className={classes.tiles}>
             <NewProjectTile onClick={toggleDialog} />
             {!isEmpty(projects) &&
               projects.map((project, ind) => (
@@ -60,6 +61,7 @@ export const ProjectsPage = ({
 )
 
 ProjectsPage.propTypes = {
+  classes: PropTypes.object.isRequired, // from enhancer (withStyles)
   match: PropTypes.object.isRequired, // from enhancer (withRouter)
   auth: PropTypes.object, // from enhancer (connect + firebaseConnect - firebase)
   projects: PropTypes.array, // from enhancer (connect + firebaseConnect - firebase)

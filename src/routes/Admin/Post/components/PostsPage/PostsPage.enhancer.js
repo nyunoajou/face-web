@@ -33,19 +33,18 @@ export default compose(
   withRouter,
   // Add handlers as props
   withHandlers({
-    addPost: props => newInstance => {
-      const { firebase, uid } = props
-      if (!uid) {
+    updatePost: props => ({ uid, answer }) => {
+      const { firebase, uid: userUid } = props
+      if (!userUid) {
         return error('로그인이 필요한 작업입니다.');
       }
       return firebase
-        .push('posts', {
-          ...newInstance,
-          createdBy: uid,
-          createdAt: firebase.database.ServerValue.TIMESTAMP
+        .update(`posts/${uid}`, {
+          answer,
+          updatedAt: firebase.database.ServerValue.TIMESTAMP
         })
         .then(() => {
-          success('작성을 성공적으로 마무리했습니다.');
+          success('답변 완료!');
         })
         .catch(err => {
           console.error('Error:', err); // eslint-disable-line no-console

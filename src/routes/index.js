@@ -11,6 +11,7 @@ import NotFoundRoute from './NotFound'
 import FaceWebLayout from '../layouts/FaceWebLayout';
 import DashboardRoute from './User/Dashboard';
 import PostRoute from './User/Post';
+import UserPostsRoute from './User/Posts';
 import PostsRoute from './Admin/Post';
 
 export default function createRoutes(store) {
@@ -25,6 +26,7 @@ export default function createRoutes(store) {
           LoginRoute,
           DashboardRoute,
           PostRoute,
+          UserPostsRoute,
           PostsRoute,
           /* Add More Routes Here */
         ].map((settings, index) => (
