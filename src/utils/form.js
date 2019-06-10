@@ -12,7 +12,7 @@
  * />
  */
 export function required(value) {
-  return value ? undefined : 'Required'
+  return value ? undefined : '필수 입력입니다.'
 }
 
 /**
@@ -29,6 +29,6 @@ export function required(value) {
  */
 export function validateEmail(value) {
   return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? 'Invalid email address'
+    ? '이메일 형식이 맞지않습니다.'
     : undefined
 }

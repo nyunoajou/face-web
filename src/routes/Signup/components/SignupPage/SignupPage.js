@@ -11,14 +11,14 @@ const SignupPage = ({ emailSignup, googleLogin, onSubmitFail, classes }) => (
     <Paper className={classes.panel}>
       <SignupForm onSubmit={emailSignup} onSubmitFail={onSubmitFail} />
     </Paper>
-    <div className={classes.orLabel}>or</div>
+    <div className={classes.orLabel}>또는</div>
     <div className={classes.providers}>
       <GoogleButton onClick={googleLogin} />
     </div>
     <div className={classes.login}>
-      <span className={classes.loginLabel}>Already have an account?</span>
+      <span className={classes.loginLabel}>이미 가입을 하셨나요?</span>
       <Link className={classes.loginLink} to={LOGIN_PATH}>
-        Login
+        로그인
       </Link>
     </div>
   </div>

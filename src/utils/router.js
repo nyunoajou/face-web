@@ -52,15 +52,9 @@ export const UserIsNotAuthenticated = connectedRouterRedirect({
   authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
     !auth.isLoaded || isInitializing,
   redirectPath: (state, ownProps) => {
-    console.log('state');
-    console.log(state);
-    console.log('ownProps');
-    console.log(ownProps);
-
     const { firebase: { auth: { email } } } = state;
 
     if (email === 'admin@test.com') {
-      console.log('isAdmin');
       return POST_PATH;
     }
 

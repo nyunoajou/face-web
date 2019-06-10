@@ -10,19 +10,19 @@ const SignupForm = ({ pristine, submitting, handleSubmit, classes }) => (
     <Field
       name="username"
       component={TextField}
-      label="Username"
+      label="이름"
       validate={required}
     />
     <Field
       name="email"
       component={TextField}
-      label="Email"
+      label="이메일"
       validate={[required, validateEmail]}
     />
     <Field
       name="password"
       component={TextField}
-      label="Password"
+      label="비밀번호"
       type="password"
       validate={required}
     />
@@ -32,7 +32,7 @@ const SignupForm = ({ pristine, submitting, handleSubmit, classes }) => (
         type="submit"
         variant="contained"
         disabled={pristine || submitting}>
-        {submitting ? 'Loading' : 'Sign Up'}
+        {submitting ? '로딩중...' : '회원가입'}
       </Button>
     </div>
   </form>
